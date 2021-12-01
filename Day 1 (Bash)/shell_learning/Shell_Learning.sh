@@ -1,13 +1,16 @@
-#! /usr/bin/bash
+#!/usr/bin/bash
 
-# !     = indices rather than elements in array
-# []    = old POSIX shells
-# [[]]  = new POSIX shells
-# ;     = similar to newline
-# ()    = run list of commands in subprocess
-# $()   = substitute result of variable to string
-# (())  = evaluate arithmetic statement
-# $(()) = express arithmetic expression
+# "${}"    = can be used to wrap variables if they can be empty or contain spaces (or any whitespace) pr special characters (wildcards).
+# ''       = for special characters
+# ~        = used in conjuntion with "=", means to look to the left of "=" regex
+# !        = indices rather than elements in array
+# []       = old POSIX shells
+# [[]]     = new POSIX shells
+# ;        = similar to newline
+# ()       = run list of commands in subprocess
+# $()      = substitute result of variable to string
+# (())     = evaluate arithmetic statement
+# $(())    = express arithmetic expression
 
 # ECHO COMMAND
 # echo Hello World!
@@ -106,7 +109,7 @@
 # "IFS=" prevents leading/trailing whitespace from being trimmed
 # "-r" prevents backslash escapes from being interpreted
 # "|| [[ -n "$line" ]]" prevents the last line form being ignored if it doesn't end with a '\n' (since 'read' returns a non-zero exit code when it encounters EOF)
-# while IFS= read -r CURRENT_LINE || [[ -n "$line" ]]
+# while IFS= read -r CURRENT_LINE || [[ -n "$CURRENT_LINE" ]]
     # do
         # echo "${LINE}: ${CURRENT_LINE}"
         # ((LINE++)) # Arithmetic statement
