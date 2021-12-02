@@ -21,6 +21,7 @@ function calculation() {
                 break;;
         esac
     done < $file
+    
     if [[ $1 = "part_one" ]]; then
         echo $(( $aim * $position ))
     elif [[ $1 = "part_two" ]]; then
@@ -28,12 +29,19 @@ function calculation() {
     fi
 }
 
-function part_one() {
-    echo $( calculation "part_one" )
-}
-
-function part_two() {
-    echo $( calculation "part_two" )
+function main() {
+    # part_one or part_two
+    arr=( "part_one" "part_two" )
+    [[ -n "$1" && $# -lt 2 ]] && [[ " ${arr[*]} " =~ " $1 " ]] &&
+    echo Answer: $( calculation "$1" ) ||
+    read -p "Provide 'part_one' or 'part_two': " input
+    check=( $input )
+    while [[ -z "${check[@]}" || ${#check[@]} -gt 0 ]] &&
+    ! [[ " ${arr[*]} " =~ " ${check[0]} " && ${#check[@]} -lt 2 ]]; do
+        read -p "Provide 'part_one' or 'part_two': " input
+        check=( $input )
+    done
+    echo Answer: $( calculation "$input" )
 }
 
 # Check if there are any arguments
