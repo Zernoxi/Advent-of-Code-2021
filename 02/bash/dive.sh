@@ -32,16 +32,18 @@ function calculation() {
 function main() {
     # part_one or part_two
     arr=( "part_one" "part_two" )
-    [[ -n "$1" && $# -lt 2 ]] && [[ " ${arr[*]} " =~ " $1 " ]] &&
-    echo Answer: $( calculation "$1" ) ||
-    read -p "Provide 'part_one' or 'part_two': " input
-    check=( $input )
-    while [[ -z "${check[@]}" || ${#check[@]} -gt 0 ]] &&
-    ! [[ " ${arr[*]} " =~ " ${check[0]} " && ${#check[@]} -lt 2 ]]; do
+    if [[ -n "$1" && $# -lt 2 ]] && [[ " ${arr[*]} " =~ " $1 " ]]; then
+        echo Answer: $( calculation "$1" )
+    else
         read -p "Provide 'part_one' or 'part_two': " input
         check=( $input )
-    done
-    echo Answer: $( calculation "$input" )
+        while [[ -z "${check[@]}" || ${#check[@]} -gt 0 ]] &&
+        ! [[ " ${arr[*]} " =~ " ${check[0]} " && ${#check[@]} -lt 2 ]]; do
+            read -p "Provide 'part_one' or 'part_two': " input
+            check=( $input )
+        done
+        echo Answer: $( calculation "$input" )
+    fi
 }
 
 # Check if there are any arguments
