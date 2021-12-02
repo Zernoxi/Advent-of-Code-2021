@@ -1,28 +1,6 @@
 #!/usr/bin/env bash
 
-function part_one() {
-    declare -r dir="$(cd "$(dirname "${0}")" && pwd)"
-
-    position=0
-    depth=0
-    file="$dir/commands.txt"
-
-    while read -a CURRENT_LINE || [ -n "${CURRENT_LINE}" ]; do
-        case "${CURRENT_LINE[0]}" in
-            "down")
-                depth=$(( $depth + "${CURRENT_LINE[1]//[$'\015']}" ));;
-            "forward")
-                position=$(( $position + "${CURRENT_LINE[1]//[$'\015']}" ));;
-            "up")
-                [[ $depth -ne 0 && $depth -ge "${CURRENT_LINE[1]//[$'\015']}" ]] && depth=$(( $depth - "${CURRENT_LINE[1]//[$'\015']}" ));;
-            *)
-                break;;
-        esac
-    done < $file
-    echo "$(( $position * $depth ))"
-}
-
-function part_two() {
+function calculation() {
     declare -r dir="$(cd "$(dirname "${0}")" && pwd)"
 
     position=0 # forward increase
@@ -43,7 +21,19 @@ function part_two() {
                 break;;
         esac
     done < $file
-    echo "$(( $position * $depth ))"
+    if [[ $1 = "part_one" ]]; then
+        echo $(( $position * $aim ))
+    elif [[ $1 = "part_two" ]]; then
+        echo $(( $position * $depth ))
+    fi
+}
+
+function part_one() {
+    echo $( calculation "part_one" )
+}
+
+function part_two() {
+    echo $( calculation "part_two" )
 }
 
 # Check if there are any arguments
