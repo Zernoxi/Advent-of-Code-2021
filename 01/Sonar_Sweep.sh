@@ -1,9 +1,11 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 function part_one() {
+    declare -r dir="$(cd "$(dirname "${0}")" && pwd)"
+
     line=1
     num_inc=0
-    file=".\depth.txt"
+    file="${dir}/depth.txt"
 
     while IFS="" read -r current_line|| [ -n "${current_line}" ]; do
         if [[ ${line} -eq 1 ]] ; then
@@ -17,19 +19,20 @@ function part_one() {
         if [[ "${pre_line}" -lt "${cur_line}" && "${pre_line}" -ne 0 ]] ; then
             ((num_inc++))
         fi
-    done < $file
+    done < "${file}"
 
     echo ${num_inc}    
 }
 
 function part_two() {
     declare -i index=0
+    declare -r dir="$(cd "$(dirname "${0}")" && pwd)"
 
     win_inc=0
     modded_arr=()
-    file=".\depth.txt"
+    file="${dir}/depth.txt"
 
-    mapfile -t arr <  <(tr -d '\r' < "$file") 
+    mapfile -t arr <  <(tr -d '\r' < "${file}") 
 
     # groups of three in array
     for i in ${!arr[@]}; do
