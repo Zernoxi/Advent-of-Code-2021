@@ -4,7 +4,8 @@ function main() {
     declare -r dir="$(cd "$(dirname "${0}")" && pwd)"
 
     file="$dir/../commands.txt"
-    $file test.txt $1
+    awk_file="$dir/dive.awk"
+    $awk_file $file $1
 }
 
 # Check if there are any arguments
