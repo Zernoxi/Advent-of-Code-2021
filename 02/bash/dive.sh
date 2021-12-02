@@ -3,10 +3,10 @@
 function calculation() {
     declare -r dir="$(cd "$(dirname "${0}")" && pwd)"
 
-    position=0 # forward increase
-    depth=0 # forward * aim increase
     aim=0 # down increase, up decrease
-    file="$dir/commands.txt"
+    depth=0 # forward * aim increase
+    position=0 # forward increase
+    file="$dir/../commands.txt"
 
     while read -a CURRENT_LINE || [ -n "${CURRENT_LINE}" ]; do
         case "${CURRENT_LINE[0]}" in
@@ -22,9 +22,9 @@ function calculation() {
         esac
     done < $file
     if [[ $1 = "part_one" ]]; then
-        echo $(( $position * $aim ))
+        echo $(( $aim * $position ))
     elif [[ $1 = "part_two" ]]; then
-        echo $(( $position * $depth ))
+        echo $(( $depth * $position ))
     fi
 }
 
