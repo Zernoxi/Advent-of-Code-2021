@@ -1,9 +1,9 @@
 # Advent of Code 2021
-Attempting to solve problems with bash (shell) script.
+Attempting to solve problems with bash (shell) script and maybe some awk script.
 
 # Problems:
   - [x] 1
-  - [ ] 2
+  - [x] 2
   - [ ] 3
   - [ ] 4
   - [ ] 5
