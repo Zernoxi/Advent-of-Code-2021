@@ -4,8 +4,8 @@ BEGIN {
     aim = 0;
     depth = 0;
     position = 0;
-    arg = ARGV[2];
-    ARGV[2] = "";
+    arg = ARGV[1];
+    ARGV[1] = ENVIRON["PWD"]"/test.txt";
 }
 
 $1 == "down" { 
@@ -25,8 +25,8 @@ $1 == "up" {
 
 END {
     if (arg == "part_one") {
-        printf "%d", aim * position;
+        printf "Answer: %d", aim * position;
     } else if (arg == "part_two") {
-        printf "%d", depth * position;
+        printf "Answer: %d", depth * position;
     }
 }
