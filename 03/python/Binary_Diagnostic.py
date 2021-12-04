@@ -39,8 +39,9 @@ def main(data):
     print(part_two(data))
     
 if __name__ == "__main__":
-    test_path = path.abspath("./03/test.txt")
-    file_path = path.abspath("./03/binary.txt")
+    dir_path = path.dirname(__file__)
+    test_path = path.join(dir_path, "..", "test.txt")
+    file_path = path.join(dir_path, "..", "binary.txt")
     with open(file_path) as f:
         data = [
             list(map(int, bits))

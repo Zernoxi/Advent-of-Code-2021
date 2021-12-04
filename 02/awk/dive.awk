@@ -5,7 +5,7 @@ BEGIN {
     depth = 0;
     position = 0;
     arg = ARGV[1];
-    ARGV[1] = ENVIRON["PWD"]"/test.txt";
+    ARGV[1] = ENVIRON["PWD"]"/commands.txt";
 }
 
 $1 == "down" { 
