@@ -3,60 +3,42 @@
 # // cSpell:disable
 
 from os import path
-from typing import *
 
-Co_Ordinates = tuple[tuple[Mapping[int, str]]]
-Grid = list[list[tuple[int, int], int]]
-Data = list[str]
+def solution(data, part):
+    count = {}
+    answer = 0
 
-def _parse_co_ords(dataset: Data) -> Co_Ordinates:
-    return tuple(
-        tuple(map(int, x_y.split(",")))
-        for line in dataset
-        for x_y in line.rstrip().split(" -> ")
-    )
+    for line in data:
+        start, end = line.rstrip().split(" -> ")
+        x1, y1 = start.split(",")
+        x2, y2 = end.split(",")
+        x1 = int(x1)
+        y1 = int(y1)
+        x2 = int(x2)
+        y2 = int(y2)
+        if x1 == x2 or y1 == y2:
+            x1, x2 = min(x1, x2), max(x1, x2)
+            y1, y2 = min(y1, y2), max(y1, y2)
+            for x in range(x1, x2+1):
+                for y in range(y1, y2+1):
+                    if (x, y) not in count:
+                        count[(x, y)] = 0
+                    count[(x, y)] += 1
+        elif part == 2:
+            dy = y2-y1
+            dx = x2-x1
+            for i in range(abs(dx)+1):
+                x = x1 + (1 if dx > 0 else (-1 if dx < 0 else 0)) * i
+                y = y1 + (1 if dy > 0 else (-1 if dy < 0 else 0)) * i
+                if (x, y) not in count:
+                    count[(x, y)] = 0
+                count[(x, y)] += 1
 
-def _create_grid(co_ords: Co_Ordinates) -> Grid:
-    return tuple(
-        [(i, j), 0]
-        for i in range(max(x for x, _ in co_ords)+1)
-        for j in range(max(y for _, y in co_ords)+1)
-    )
+    for overlap in count:
+        if count[overlap] > 1:
+            answer += 1
+    return answer
 
-def return_overlap(grid: Grid) -> int:
-    return sum(
-        1
-        for _, overlap in grid
-        if overlap >= 2
-    )
-
-def function(m, x, c):
-    return m * x + c
-
-# By default only Part one
-def calculation(co_ords: Co_Ordinates, grid: Grid, part: int) -> Grid:
-    for (x1, y1), (x2, y2) in (co_ords[i:i+2] for i in range(0, len(co_ords), 2)):
-        for idx, node in enumerate(grid):
-            x = node[0][0]
-            y = node[0][1]  
-            if x1 == x2:
-                dy1, dy2 = sorted((y1, y2))
-                if x == x1 and y in range(dy1, dy2+1):
-                    grid[idx][1] = node[1] + 1
-            elif y1 == y2:
-                dx1, dx2 = sorted((x1, x2))
-                if y == y1 and x in range(dx1, dx2+1):
-                    grid[idx][1] = node[1] + 1
-            elif part == 2:
-                m = (y2 - y1) // (x2 - x1)
-                if m == 1 or m == -1:
-                    dy1, dy2 = sorted((y1, y2))
-                    for dy in range(dy1, dy2+1):
-                        if function(m, x, y1-m*x1) == dy and y == dy:
-                            grid[idx][1] = node[1] + 1
-                            break
-    return grid
-        
 if __name__ == "__main__":
     dir_path = path.dirname(__file__)
     test_path = path.join(dir_path, "test.txt")
@@ -64,12 +46,6 @@ if __name__ == "__main__":
 
     with open(file_path) as data:
         dataset = data.readlines()
-
-    co_ords = _parse_co_ords(dataset)
-    grid = _create_grid(co_ords)
-    # print("Part One: ", return_overlap(calculation(co_ords, grid, 1)))
-    print("Part Two: ", return_overlap(calculation(co_ords, grid, 2)))
-    # calculation(co_ords, grid, 2)
-
-    # Part one only concerned about horizontal and vertical lines: x1 = x2 or y1 = y2
-    # Part two add diagonals
+        
+    print("Part One:", solution(dataset, 1))
+    print("Part Two:", solution(dataset, 2))
