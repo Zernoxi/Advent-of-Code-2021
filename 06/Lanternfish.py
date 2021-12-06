@@ -8,12 +8,9 @@ def main(data, timeframe):
     i = 0
     j = 0
     k = 0
-    # data[i] = LATERN
-    #         data.append(NEW_LATERN)
     while i < timeframe:
         while j < len(data):
             if data[j] > -1:
-                # print("hi")
                 data[j] -= 1
             j += 1
         while k < len(data):
