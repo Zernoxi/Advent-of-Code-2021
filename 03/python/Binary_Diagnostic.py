@@ -42,7 +42,7 @@ if __name__ == "__main__":
     dir_path = path.dirname(__file__)
     test_path = path.join(dir_path, "..", "test.txt")
     file_path = path.join(dir_path, "..", "binary.txt")
-    with open(file_path) as f:
+    with open(test_path) as f:
         data = [
             list(map(int, bits))
             for bits in f.read().split()

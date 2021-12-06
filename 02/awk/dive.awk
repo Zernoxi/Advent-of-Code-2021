@@ -4,8 +4,9 @@ BEGIN {
     aim = 0;
     depth = 0;
     position = 0;
-    arg = ARGV[1];
-    ARGV[1] = ENVIRON["PWD"]"/commands.txt";
+
+    arg = ARGV[2];
+    ARGV[2] = "";
 }
 
 $1 == "down" { 
@@ -13,7 +14,7 @@ $1 == "down" {
 }
 
 $1 == "forward" { 
-    position += $2;
+    position += $2; 
     depth += aim * $2;
 }
 

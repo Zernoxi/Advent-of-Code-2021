@@ -25,8 +25,8 @@ def solution(data, part):
                         count[(x, y)] = 0
                     count[(x, y)] += 1
         elif part == 2:
-            dy = y2-y1
-            dx = x2-x1
+            dy = y2 - y1
+            dx = x2 - x1
             for i in range(abs(dx)+1):
                 x = x1 + (1 if dx > 0 else (-1 if dx < 0 else 0)) * i
                 y = y1 + (1 if dy > 0 else (-1 if dy < 0 else 0)) * i
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     test_path = path.join(dir_path, "test.txt")
     file_path = path.join(dir_path, "input.txt")
 
-    with open(file_path) as data:
+    with open(test_path) as data:
         dataset = data.readlines()
         
     print("Part One:", solution(dataset, 1))
