@@ -1,5 +1,5 @@
 # Advent of Code 2021
-Attempting to solve problems with bash (shell) script and maybe some awk script. May end up using other languages...May not even finish...
+Attempting to solve problems with bash script and maybe some awk script. May end up using other languages...May not even finish...
 
 # Problems:
   - [x] **1**
@@ -8,8 +8,8 @@ Attempting to solve problems with bash (shell) script and maybe some awk script.
   - [ ] **4** (Cheated - Part 2)
   - [ ] **5** (Cheated - Part 2)
   - [x] **6** (Cheated - Part 2)
-  - [ ] **7**
-  - [ ] **8**
+  - [x] **7** (Cheated - Part 2)
+  - [x] **8**
   - [ ] **9**
   - [ ] **10**
   - [ ] **12**

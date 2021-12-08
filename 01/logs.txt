@@ -1,0 +1,1 @@
+./01.sh: line 13: 10 -  : syntax error: operand expected (error token is "-  ")

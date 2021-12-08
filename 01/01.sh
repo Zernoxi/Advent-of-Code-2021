@@ -7,7 +7,7 @@ function calculation() {
     modded_arr=()
     file="${dir}/depth.txt"
 
-    mapfile -t arr <  <(tr -d '\r' < "${file}")
+    mapfile -t arr < <(tr -d '\r' < "${file}")
 
     cur_arr=( ${arr[@]:$1} )
     pre_arr=( ${arr[@]:: $(( ${#arr[@]} - $1 ))} )
@@ -16,9 +16,10 @@ function calculation() {
         (( ${pre_arr[$i]} < ${cur_arr[$i]} )) && (( inc++ ))
     done
     
-    echo $inc
+    echo "$inc"
 }
 
+# 1 or 3
 function main() {
     echo Answer: $( calculation "$1" )
 }

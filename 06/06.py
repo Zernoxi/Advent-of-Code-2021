@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python -V
 
 from os import path
 
@@ -13,8 +13,8 @@ def main(data, timeframe):
         fishs = {}
         for lifetime, nums in data.items():
             if lifetime == 0:
-                dict_check(fishs, 6, nums)
-                dict_check(fishs, 8, nums)
+                dict_check(fishs, LATERN, nums)
+                dict_check(fishs, NEW_LATERN, nums)
             else:
                 dict_check(fishs, lifetime-1, nums)
         data = fishs
