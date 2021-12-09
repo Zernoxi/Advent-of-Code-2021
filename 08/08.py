@@ -33,9 +33,9 @@ def solution(data, part=1):
 
     for digits, output in data:
         uniqueness(output, uniques)
-        occurrences = {"a": 0, "b": 0, "c": 0, "d": 0, "e": 0, "f": 0, "g": 0}
-        segments = {"a": "", "b": "", "c": "", "d": "", "e": "", "f": "", "g": ""}
         if part == 2:
+            occurrences = {"a": 0, "b": 0, "c": 0, "d": 0, "e": 0, "f": 0, "g": 0}
+            segments = {"a": "", "b": "", "c": "", "d": "", "e": "", "f": "", "g": ""}
             for letters in digits:
                 if len(letters) == Unique.ONE:
                     one = "".join(sorted(letters))

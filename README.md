@@ -10,7 +10,7 @@ Attempting to solve problems with bash script and maybe some awk script. May end
   - [x] **6** (Cheated - Part 2)
   - [x] **7** (Cheated - Part 2)
   - [x] **8**
-  - [ ] **9**
+  - [x] **9** (Cheated - Part 2)
   - [ ] **10**
   - [ ] **12**
   - [ ] **13**
