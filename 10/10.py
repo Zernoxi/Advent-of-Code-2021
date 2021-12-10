@@ -58,7 +58,7 @@ def main(data, part=1):
                 score += auto_score[delim[symbol]]
             complete_score.append(score)
         complete_score.sort()
-    return corrupt_scor
+    return corrupt_score
 
 if __name__ == "__main__":
     dir_path = path.dirname(__file__)
