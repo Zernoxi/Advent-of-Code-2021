@@ -58,6 +58,7 @@ def main(data, part=1):
                 score += auto_score[delim[symbol]]
             complete_score.append(score)
         complete_score.sort()
+        return complete_score[len(complete_score) // 2]
     return corrupt_score
 
 if __name__ == "__main__":
