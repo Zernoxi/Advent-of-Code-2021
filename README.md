@@ -12,7 +12,8 @@ Attempting to solve problems with bash script and maybe some awk script. May end
   - [x] **8**
   - [x] **9** (Cheated - Part 2)
   - [x] **10**
-  - [ ] **12**
+  - [ ] **11** (Cheated)
+  - [ ] **12** (Cheated)
   - [ ] **13**
   - [ ] **14**
   - [ ] **15**

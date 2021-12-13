@@ -18,7 +18,6 @@ def main(data, part=1):
     """
     uncorrupt = []
     complete_score = []
-    corrupt = 0
     corrupt_score = 0
     delim = {"(": ")", "[": "]", "{": "}", "<": ">"}
     delim_score = {")": 3, "]": 57, "}": 1197, ">": 25137}
@@ -33,12 +32,8 @@ def main(data, part=1):
                 if delim[queue[-1]] == character:
                     queue.pop()
                 else:
-                    corrupt = 1
                     corrupt_score += delim_score[character]
                     break
-        if corrupt:
-            corrupt = 0
-            continue
         else:
             uncorrupt.append(line)
 
